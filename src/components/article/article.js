@@ -87,7 +87,21 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+  {
+    title: 'Never-Before-Seen Alternate Universes',
+    date: 'Apr 13, 2022',
+    firstParagraph: "I'm out of my head, of my heart, of my mind, 'cause you can run but you can't hide, I'm gonna make you mine",
+    secondParagraph: 'I know why the caged bird sings',
+    thirdParagraph: 'I open and close a symphony of doors in this beleagured mind every day, and will not be told to halt. Thank you.',
+  },
+  {
+    title: 'Art Is A Battlefield',
+    date: 'Apr 13, 2022',
+    firstParagraph: 'It once seemed clear to me that success was guaranteed beforehand',
+    secondParagraph: 'paralyzed by fear, it then became clear that I was cheating',
+    thirdParagraph: 'but is it cheating if you win?'
+  },
 ];
 
 /*
@@ -115,3 +129,48 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+/* **** STEPS 1-3 **** */
+
+function articleMaker(articleObj) {
+  const article = document.createElement('div');
+  const articleHeader = document.createElement('h2');
+  articleHeader.textContent = articleObj.title;
+  article.appendChild(articleHeader);
+
+  const dateParagraph = document.createElement('p');
+  dateParagraph.textContent = articleObj.date;
+  dateParagraph.classList.add('date');
+  article.appendChild(dateParagraph);
+
+  const paragraph1 = document.createElement('p');
+  paragraph1.textContent = articleObj.firstParagraph;
+  article.appendChild(paragraph1);
+
+  const paragraph2 = document.createElement('p');
+  paragraph2.textContent = articleObj.firstParagraph;
+  article.appendChild(paragraph2);
+
+  const paragraph3 = document.createElement('p');
+  paragraph3.textContent = articleObj.firstParagraph;
+  article.appendChild(paragraph3);
+
+  const buttonExpander = document.createElement('span');
+  buttonExpander.textContent = '+';
+  buttonExpander.classList.add('expandButton');
+  buttonExpander.addEventListener('click', (e) => {
+    article.classList.toggle('article-open');
+  });
+  article.appendChild(buttonExpander);
+
+  article.classList.add('article');
+  return article;
+}
+
+/* ******** */
+
+data.forEach(dataItem => {
+  const newArticle = articleMaker(dataItem);
+  const articleParent = document.querySelector('div.articles');
+  articleParent.appendChild(newArticle);
+});
