@@ -58,7 +58,6 @@ function menuMaker(menuArray) {
 
 const newMenu = menuMaker(menuItems);
 
-console.log(newMenu);
 
 const menuParent = document.querySelector('.header');
 menuParent.appendChild(newMenu);
